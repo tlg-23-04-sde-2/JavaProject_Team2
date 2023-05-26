@@ -41,7 +41,10 @@ class Board {
                 System.out.printf(ANSI_BLUE + "%s\n", status + ANSI_RESET);
                 System.out.printf(ANSI_GREEN + "%23s", "Player Up: " + ANSI_RESET);
                 System.out.printf(ANSI_BLUE + "%s", player + ANSI_RESET);
+                break;
             }
+            default:
+                break;
         }
 
         //Print out the board
