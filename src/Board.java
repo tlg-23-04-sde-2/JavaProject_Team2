@@ -2,10 +2,9 @@ class Board {
 
     public static void main(String[] args) {
 
-        //"Test Push"
-
-        String player = "Player 1";
-        String status = "In-Play";
+        //"Test Board Section"
+        String player = "HAL 9000";
+        Status status = Status.PLAYING;
         String[] grid = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
 
         final String ANSI_BLUE = "\u001B[34m";
@@ -22,14 +21,22 @@ class Board {
         System.out.printf(ANSI_GREEN + "%64s\n", "***************************" + ANSI_RESET);
 
         switch (status) {
-            case "Game Over": {
+
+            case TIE:{
+                System.out.printf(ANSI_GREEN + "%23s", "Game Status: " + ANSI_RESET);
+                System.out.printf(ANSI_RED + "%s\n", status + ANSI_RESET);
+                System.out.printf(ANSI_GREEN + "%23s", "Winner Is: " + ANSI_RESET);
+                System.out.printf(ANSI_BLUE + "%s", "No Winner" + ANSI_RESET);
+                break;
+            }
+            case GAME_OVER: {
                 System.out.printf(ANSI_GREEN + "%23s", "Game Status: " + ANSI_RESET);
                 System.out.printf(ANSI_RED + "%s\n", status + ANSI_RESET);
                 System.out.printf(ANSI_GREEN + "%23s", "Winner Is: " + ANSI_RESET);
                 System.out.printf(ANSI_BLUE + "%s", player + ANSI_RESET);
                 break;
             }
-            default: {
+            case PLAYING: {
                 System.out.printf(ANSI_GREEN + "%23s", "Game Status: " + ANSI_RESET);
                 System.out.printf(ANSI_BLUE + "%s\n", status + ANSI_RESET);
                 System.out.printf(ANSI_GREEN + "%23s", "Player Up: " + ANSI_RESET);
