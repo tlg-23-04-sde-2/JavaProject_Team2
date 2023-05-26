@@ -1,2 +1,4 @@
-# JavaProject_TeamN
-Template repo for Java project
+# JavaProject_Team2
+Rich Ropac
+Exxon Suarez
+Jason Pikturna
