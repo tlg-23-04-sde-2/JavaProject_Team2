@@ -1,11 +1,9 @@
-package com.player;
-import com.player.Player;
+
 
 public class AiPlayer implements Player {
 
     private final String name = "Hal";
-    private final String mark = "X";
-
+    private final String mark = "O";
 
 
 

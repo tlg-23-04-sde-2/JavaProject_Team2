@@ -1,5 +1,3 @@
-package com.player;
-
 public interface Player {
 
     // Methods
@@ -8,7 +6,5 @@ public interface Player {
     public String setMark();            // set mark ( X or O ) depending on who's turn it is
 
     public boolean halsTurn();       // return a true or false depending on if its hals turn
-
-
 
 }

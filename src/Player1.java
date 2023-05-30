@@ -1,9 +1,4 @@
-package com.player;
 
-import com.player.Player;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class Player1 implements Player {
 
@@ -14,17 +9,18 @@ public class Player1 implements Player {
     public int lowerBound = 1;
     public int upperBound = 9;
 
-
-
     // constructors
 
+    public Player1(String name, String mark) {
+        setName(name);
+        setMark(mark);
+    }
 
-    public Player1(String name, String mark, int nextMove) {
+    public Player1(String name, String mark, int nextMove) throws InvalidInputException{
         setName(name);
         setMark(mark);
         setNextMove(nextMove);
     }
-
 
 
     // accessor methods
@@ -34,19 +30,21 @@ public class Player1 implements Player {
     public void setMark(String mark) {
         this.mark = mark;
     }
-    public void setNextMove(int nextMove) {
-        this.nextMove = nextMove;
+    public void setNextMove(int nextMove){
+
+        if ( nextMove == lowerBound ) {
+            this.nextMove = nextMove;
+        }
+        if ( nextMove >= lowerBound && nextMove <= upperBound ) {
+            this.nextMove = nextMove - 1;
+        }
+
     }
 
 
     // need to code throwing of error message if next move choice is out of bounds
-    public int getNextMove() throws InvalidInputException{
-
-        if ( nextMove >= lowerBound && nextMove <= upperBound ) {
-            return nextMove;
-        } else {
-            throw new InvalidInputException("Invalid Input. Please choose a value between " + lowerBound + " - " + upperBound);
-        }
+    public int getNextMove(){
+        return nextMove;
     }
 
 
