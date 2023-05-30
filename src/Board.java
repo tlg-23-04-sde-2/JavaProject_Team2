@@ -43,7 +43,7 @@ public class Board {
         for (int i = 0; i < grid.length; i++) {
             if (grid[i].equals("")) {
                 grid[i] = "O";
-                int score = miniMax(0, true);
+                int score = miniMax(0, false);
                 grid[i] = "";
                 if (score < bestScore) {
                     bestScore = score;
