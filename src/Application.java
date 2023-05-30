@@ -1,7 +1,7 @@
 import java.util.*;
 import java.util.Map;
 
-public class TicTacToe {
+public class Application {
 
     static String[] player1Positions = new String[9];
     static String[] halsPositions = new String[9];
