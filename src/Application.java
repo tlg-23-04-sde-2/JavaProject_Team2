@@ -14,15 +14,26 @@ public class Application {
         //set up for Player 1 to start
         Scanner scanner = new Scanner(System.in);           // reads input from console
         Board board = new Board();
+        String diffLevel = "Easy";
 
         System.out.printf(ANSI_GREEN + "%80s\n", "********** Welcome to TicTacToe with Hal-9000 **********\n" + ANSI_RESET);
         System.out.printf(ANSI_GREEN + "%58s", "Please enter your name: ");
         String playerName = scanner.nextLine().trim();
+        Player1 newPlayer = new Player1(playerName, "X");
+
+        AiPlayer newPlayer2 = new AiPlayer();
+        System.out.printf(ANSI_GREEN + "%58s", "Please enter difficulty level, (E)asy or (H)ard:  ");
+
+        diffLevel = scanner.nextLine().trim().toUpperCase();
+
+        while(!diffLevel.matches("E|H")) {
+            System.out.printf(ANSI_GREEN + "%58s", "Please enter difficulty level, (E)asy or (H)ard:  ");
+            diffLevel = scanner.nextLine().trim().toUpperCase();
+        }
+        newPlayer2.setDifficultyLevel(diffLevel);
+
 
         // Instantiated new Player1
-        Player1 newPlayer = new Player1(playerName, "X");
-        AiPlayer newPlayer2 = new AiPlayer();
-
 
         // getPlayer method to return name of new player
         String currentPlayer = newPlayer.getPlayer();
@@ -92,23 +103,14 @@ public class Application {
             }
 
             //Hals turn and playing with miniMax algorithm
-            int halsPosition = board.bestMove();
+            int halsPosition = newPlayer2.aiMove(board.grid);
             board.grid[halsPosition] = newPlayer2.setMark();
             board.updateBoard(newPlayer2.setMark(), halsPosition);
             board.showBoard(newPlayer.getPlayer(), Status.PLAYING.getDisplay());
 
 
 
-            //Hals turn and playing with a random generator
-//                Random rand = new Random();
-//                int halsPosition = rand.nextInt(9);
-//                //checking to ensure Hals number is going into a blank spot
-//                while (player1Positions[halsPosition] != null || halsPositions[halsPosition] != null) {
-//                    halsPosition = rand.nextInt(9);
-//                }
-//                halsPositions[halsPosition] = halsMark;
-//                board.updateBoard(halsMark, halsPosition);
-//                board.showBoard("Player 1", "In-Play");
+
 
             //check for a winner after Hals move
             if (board.isThereAWinner(board.grid, newPlayer2.setMark())) {

@@ -3,7 +3,6 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Board {
-
     String[] grid = {"", "", "", "", "", "", "", "", ""};
     String player = "";
     String status = "In-Play";
@@ -33,60 +32,11 @@ public class Board {
         } else {
             return false;
         }
+
     }
 
     //Implementing miniMax for Hal's move
 
-    public int bestMove() {
-        int bestScore = Integer.MAX_VALUE;
-        int bestMove = 0;
-        for (int i = 0; i < grid.length; i++) {
-            if (grid[i].equals("")) {
-                grid[i] = "O";
-                int score = miniMax(0, false);
-                grid[i] = "";
-                if (score < bestScore) {
-                    bestScore = score;
-                    bestMove = i;
-                }
-            }
-        }
-        return bestMove;
-    }
-
-    public int miniMax(int depth, boolean isMaximizing) {
-        int bestScore = 0;
-        int score = 0;
-        List<String> tieTracker = new ArrayList<>(Arrays.asList(grid));
-        tieTracker.removeAll(Arrays.asList("", null));
-        if (isThereAWinner(grid, "X")) return 1;
-        if (isThereAWinner(grid, "O")) return -1;
-        if (tieTracker.size() == 9) return 0;
-
-        if (isMaximizing){
-            bestScore = Integer.MAX_VALUE;
-            for (int i = 0; i < grid.length; i++){
-                if (grid[i].equals("")) {
-                    grid[i] = "O";
-                    score = miniMax(depth + 1, false);
-                    grid[i] = "";
-                    bestScore = Math.min(score, bestScore);
-                }
-            }
-            return bestScore;
-        } else {
-            bestScore = Integer.MIN_VALUE;
-            for (int i = 0; i < grid.length; i++){
-                if (grid[i].equals("")) {
-                    grid[i] = "X";
-                    score = miniMax(depth + 1, true);
-                    grid[i] = "";
-                    bestScore = Math.max(score, bestScore);
-                }
-            }
-            return bestScore;
-        }
-    }
 
 
     public void showBoard(String thePlayer, String theStatus) {
