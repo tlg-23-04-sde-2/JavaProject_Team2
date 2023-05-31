@@ -1,4 +1,5 @@
 public class Board {
+
     String[] grid = {"", "", "", "", "", "", "", "", ""};
     String player = "";
     String status = "In-Play";
@@ -15,14 +16,14 @@ public class Board {
     public boolean isThereAWinner(String[] grid, String mark) {
 
         if (
-                (grid[0].equals(mark) && grid[1].equals(mark) && grid[2].equals(mark)) ||
-                        (grid[3].equals(mark) && grid[4].equals(mark) && grid[5].equals(mark)) ||
-                        (grid[6].equals(mark) && grid[7].equals(mark) && grid[8].equals(mark)) ||
-                        (grid[0].equals(mark) && grid[3].equals(mark) && grid[6].equals(mark)) ||
-                        (grid[1].equals(mark) && grid[4].equals(mark) && grid[7].equals(mark)) ||
-                        (grid[2].equals(mark) && grid[5].equals(mark) && grid[8].equals(mark)) ||
-                        (grid[0].equals(mark) && grid[4].equals(mark) && grid[8].equals(mark)) ||
-                        (grid[2].equals(mark) && grid[4].equals(mark) && grid[6].equals(mark))) {
+              (grid[0].equals(mark) && grid[1].equals(mark) && grid[2].equals(mark)) ||
+              (grid[3].equals(mark) && grid[4].equals(mark) && grid[5].equals(mark)) ||
+              (grid[6].equals(mark) && grid[7].equals(mark) && grid[8].equals(mark)) ||
+              (grid[0].equals(mark) && grid[3].equals(mark) && grid[6].equals(mark)) ||
+              (grid[1].equals(mark) && grid[4].equals(mark) && grid[7].equals(mark)) ||
+              (grid[2].equals(mark) && grid[5].equals(mark) && grid[8].equals(mark)) ||
+              (grid[0].equals(mark) && grid[4].equals(mark) && grid[8].equals(mark)) ||
+              (grid[2].equals(mark) && grid[4].equals(mark) && grid[6].equals(mark))) {
             return true;
         } else {
             return false;
@@ -37,14 +38,10 @@ public class Board {
 
         final String ANSI_BLUE = "\u001B[34m";
         final String ANSI_GREEN = "\u001B[32m";
-        final String ANSI_PURPLE = "\u001B[35m";
         final String ANSI_RED = "\u001B[31m";
-        final String ANSI_YELLOW = "\u001B[33m";
         final String ANSI_RESET = "\u001B[0m";
-        final String ANSI_CLEAR = "\033[H\033[2J";
 
         //Print out the headers
-        System.out.printf(ANSI_CLEAR);
         System.out.println();
         System.out.printf(ANSI_GREEN + "%64s\n", "***************************" + ANSI_RESET);
         System.out.printf(ANSI_GREEN + "%70s\n", "******* " + ANSI_BLUE + "TIC-TAC-TOE" + ANSI_GREEN + " *******");

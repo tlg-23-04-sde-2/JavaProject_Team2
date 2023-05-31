@@ -1,5 +1,3 @@
-
-
 public class Player1 implements Player {
 
     // fields ( constants )
@@ -10,7 +8,6 @@ public class Player1 implements Player {
     public int upperBound = 9;
 
     // constructors
-
     public Player1(String name, String mark) {
         setName(name);
         setMark(mark);
@@ -22,26 +19,27 @@ public class Player1 implements Player {
         setNextMove(nextMove);
     }
 
-
     // accessor methods
     public void setName(String name) {
         this.name = name;
     }
+
     public void setMark(String mark) {
         this.mark = mark;
     }
-    public void setNextMove(int nextMove){
 
-        if ( nextMove == lowerBound ) {
+    public void setNextMove(int nextMove) {
+
+        if (nextMove == lowerBound) {
             this.nextMove = nextMove;
         }
-        if ( nextMove >= lowerBound && nextMove <= upperBound ) {
+        if (nextMove >= lowerBound && nextMove <= upperBound) {
             this.nextMove = nextMove;
         }
     }
 
     // need to code throwing of error message if next move choice is out of bounds
-    public int getNextMove(){
+    public int getNextMove() {
         return nextMove;
     }
     // Interface Methods
@@ -55,11 +53,5 @@ public class Player1 implements Player {
     @Override
     public String setMark() {
         return this.mark;
-    }
-
-    // needs to return TRUE when user is prompted to input next coordinates and return FALSE while AiPlayer is generating next move
-    @Override
-    public boolean halsTurn() {
-        return false;
     }
 }

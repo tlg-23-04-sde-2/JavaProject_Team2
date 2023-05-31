@@ -1,24 +1,20 @@
 import java.util.*;
-import java.util.concurrent.TimeUnit;
-
 
 public class Application {
 
     static String ANSI_RED = "\u001B[31m";
     static String ANSI_GREEN = "\u001B[32m";
     static String ANSI_BLUE = "\u001B[34m";
-    static String ANSI_RESET = "\u001B[0m";
-
 
     public static void main(String[] args) {
-        String playAgain = "No";
+
         //set up for Player 1 to start
         Scanner scanner = new Scanner(System.in);           // reads input from console
         Board board = new Board();
 
         System.out.printf(ANSI_GREEN + "%76s", "********************************************************\n");
-        System.out.printf(ANSI_GREEN + "%86s", "******"+ ANSI_BLUE +
-                " Welcome to Playing TicTacToe with Hal-9000 " + ANSI_GREEN + "******\n" );
+        System.out.printf(ANSI_GREEN + "%86s", "******" + ANSI_BLUE +
+                " Welcome to Playing TicTacToe with Hal-9000 " + ANSI_GREEN + "******\n");
         System.out.printf(ANSI_GREEN + "%76s", "********************************************************\n");
         System.out.println();
         System.out.printf(ANSI_GREEN + "%67s", " To get started, first please enter your name: ");
@@ -31,16 +27,17 @@ public class Application {
         AiPlayer newPlayer2 = new AiPlayer();
 
         // Select the difficulty level E for Easy or H for Hard
-        System.out.printf(ANSI_GREEN + "%87s", "Please enter difficulty level, ("+
-                          ANSI_BLUE + "E" + ANSI_GREEN+ ")asy or (" + ANSI_BLUE + "H" + ANSI_GREEN + ")ard: ");
+        System.out.printf(ANSI_GREEN + "%87s", "Please enter difficulty level, (" +
+                ANSI_BLUE + "E" + ANSI_GREEN + ")asy or (" + ANSI_BLUE + "H" + ANSI_GREEN + ")ard: ");
         String diffLevel = scanner.nextLine().trim().toUpperCase();
 
         // Check to ensure user only enters and "Ee" or "Hh"
         while (!diffLevel.matches("E|H")) {
-            System.out.printf(ANSI_GREEN + "%87s", "Please enter difficulty level, ("+
-                    ANSI_BLUE + "E" + ANSI_GREEN+ ")asy or (" + ANSI_BLUE + "H" + ANSI_GREEN + ")ard: ");
+            System.out.printf(ANSI_GREEN + "%87s", "Please enter difficulty level, (" +
+                    ANSI_BLUE + "E" + ANSI_GREEN + ")asy or (" + ANSI_BLUE + "H" + ANSI_GREEN + ")ard: ");
             diffLevel = scanner.nextLine().trim().toUpperCase();
         }
+
         if (diffLevel.equals("H")) {
             diffLevel = "Hard";
             newPlayer2.setDifficultyLevel(diffLevel);
@@ -71,7 +68,7 @@ public class Application {
 
                 if (input.equals("Q")) System.exit(0);
                 // set the players input as the nextMove
-                newPlayer.setNextMove((Integer.parseInt(input))-1);
+                newPlayer.setNextMove((Integer.parseInt(input)) - 1);
 
                 if (input.matches("1|2|3|4|5|6|7|8|9|Q")) {
                     if (input.equals("Q")) {
@@ -128,7 +125,6 @@ public class Application {
                 board.player = newPlayer2.getPlayer();
                 board.showBoard(board.player, board.status, diffLevel);
                 System.exit(0);
-
             }
         }
     }

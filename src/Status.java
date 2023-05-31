@@ -1,5 +1,5 @@
 /*
- *   This provides for exactly 3 instances of Status for the board
+ *   This provides for exactly 3 instances of Statuses for the board
  */
 
 enum Status {

@@ -10,11 +10,11 @@ public class AiPlayer implements Player {
     public String diffLevel = "";
     Board theGrid = new Board();
 
-
     public void setDifficultyLevel(String level) {
         diffLevel = level;
     }
-    public int aiMove(String [] grid) {
+
+    public int aiMove(String[] grid) {
         theGrid.grid = grid;
         int halsMove = 0;
         System.out.println("The Difficulty Level is set to:  " + diffLevel);
@@ -27,12 +27,9 @@ public class AiPlayer implements Player {
             while (grid[halsPosition] != "") {
                 halsPosition = rand.nextInt(9);
             }
-//            grid[halsPosition] = mark;
-//            theGrid.updateBoard(mark, halsPosition);
-//            theGrid.showBoard("Player 1", "In-Play");
             return halsPosition;
-        }else {
-               halsMove = bestMove();
+        } else {
+            halsMove = bestMove();
         }
         return halsMove;
     }
@@ -54,55 +51,47 @@ public class AiPlayer implements Player {
         return bestMove;
     }
 
-        public int miniMax(int depth, boolean isMaximizing) {
-            int bestScore = 0;
-            int score = 0;
-            List<String> tieTracker = new ArrayList<>(Arrays.asList(theGrid.grid));
-            tieTracker.removeAll(Arrays.asList("", null));
-            if (theGrid.isThereAWinner(theGrid.grid, "X")) return 1;
-            if (theGrid.isThereAWinner(theGrid.grid, "O")) return -1;
-            if (tieTracker.size() == 9) return 0;
+    public int miniMax(int depth, boolean isMaximizing) {
+        int bestScore = 0;
+        int score = 0;
+        List<String> tieTracker = new ArrayList<>(Arrays.asList(theGrid.grid));
+        tieTracker.removeAll(Arrays.asList("", null));
+        if (theGrid.isThereAWinner(theGrid.grid, "X")) return 1;
+        if (theGrid.isThereAWinner(theGrid.grid, "O")) return -1;
+        if (tieTracker.size() == 9) return 0;
 
-            if (isMaximizing){
-                bestScore = Integer.MAX_VALUE;
-                for (int i = 0; i < theGrid.grid.length; i++){
-                    if (theGrid.grid[i].equals("")) {
-                        theGrid.grid[i] = "O";
-                        score = miniMax(depth + 1, false);
-                        theGrid.grid[i] = "";
-                        bestScore = Math.min(score, bestScore);
-                    }
+        if (isMaximizing) {
+            bestScore = Integer.MAX_VALUE;
+            for (int i = 0; i < theGrid.grid.length; i++) {
+                if (theGrid.grid[i].equals("")) {
+                    theGrid.grid[i] = "O";
+                    score = miniMax(depth + 1, false);
+                    theGrid.grid[i] = "";
+                    bestScore = Math.min(score, bestScore);
                 }
-                return bestScore;
-            } else {
-                bestScore = Integer.MIN_VALUE;
-                for (int i = 0; i < theGrid.grid.length; i++){
-                    if (theGrid.grid[i].equals("")) {
-                        theGrid.grid[i] = "X";
-                        score = miniMax(depth + 1, true);
-                        theGrid.grid[i] = "";
-                        bestScore = Math.max(score, bestScore);
-                    }
-                }
-                return bestScore;
             }
+            return bestScore;
+        } else {
+            bestScore = Integer.MIN_VALUE;
+            for (int i = 0; i < theGrid.grid.length; i++) {
+                if (theGrid.grid[i].equals("")) {
+                    theGrid.grid[i] = "X";
+                    score = miniMax(depth + 1, true);
+                    theGrid.grid[i] = "";
+                    bestScore = Math.max(score, bestScore);
+                }
+            }
+            return bestScore;
         }
+    }
 
-
-     @Override
+    @Override
     public String getPlayer() {
         return this.name;
     }
 
-
     @Override
     public String setMark() {
         return this.mark;
-    }
-
-    // return this as TRUE when its hals turn and FALSE when its LiveActionPlayers turn to input coordinates
-    @Override
-    public boolean halsTurn() {
-        return true;
     }
 }

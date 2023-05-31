@@ -29,5 +29,4 @@ public class BoardTest {
         String[] loosing = {"X", "X", "O", "", "", "", "", "", "", ""};
         assertFalse(board.isThereAWinner(loosing, "X"));
     }
-
 }
