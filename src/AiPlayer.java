@@ -19,7 +19,7 @@ public class AiPlayer implements Player {
         int halsMove = 0;
         System.out.println("The Difficulty Level is set to:  " + diffLevel);
 
-        if (diffLevel.equals("E")) {
+        if (diffLevel.equals("Easy")) {
             //Hals turn and playing with a random generator
             Random rand = new Random();
             int halsPosition = rand.nextInt(9);

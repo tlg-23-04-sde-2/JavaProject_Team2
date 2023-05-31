@@ -1,16 +1,11 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Board {
     String[] grid = {"", "", "", "", "", "", "", "", ""};
     String player = "";
     String status = "In-Play";
+    String level = "";
 
-
-    // CONSTRUCTORS - this one is private, to prevent outside instantiation (only I can create new)
+    // CONSTRUCTOR
     public Board() {
-
     }
 
     public void updateBoard(String theMark, int position) {
@@ -32,17 +27,13 @@ public class Board {
         } else {
             return false;
         }
-
     }
 
-    //Implementing miniMax for Hal's move
+    public void showBoard(String thePlayer, String theStatus, String theLevel) {
 
-
-
-    public void showBoard(String thePlayer, String theStatus) {
-
-        String player = thePlayer;
-        String status = theStatus;
+        player = thePlayer;
+        status = theStatus;
+        level = theLevel;
 
         final String ANSI_BLUE = "\u001B[34m";
         final String ANSI_GREEN = "\u001B[32m";
@@ -58,27 +49,31 @@ public class Board {
         System.out.printf(ANSI_GREEN + "%64s\n", "***************************" + ANSI_RESET);
         System.out.printf(ANSI_GREEN + "%70s\n", "******* " + ANSI_BLUE + "TIC-TAC-TOE" + ANSI_GREEN + " *******");
         System.out.printf(ANSI_GREEN + "%64s\n", "***************************" + ANSI_RESET);
+        System.out.println();
 
         switch (status) {
             case "Game Over": {
                 System.out.printf(ANSI_GREEN + "%23s", "Game Status: " + ANSI_RESET);
                 System.out.printf(ANSI_RED + "%s", status + ANSI_RESET);
                 System.out.printf(ANSI_GREEN + "%55s", "Winner Is: " + ANSI_RESET);
-                System.out.printf(ANSI_BLUE + "%s", player + ANSI_RESET);
+                System.out.printf(ANSI_RED + "%s", player + ANSI_RESET);
+                System.out.println();
                 break;
             }
-            case "Tie": {
+            case "It's A Tie": {
                 System.out.printf(ANSI_GREEN + "%23s", "Game Status: " + ANSI_RESET);
                 System.out.printf(ANSI_RED + "%s", status + ANSI_RESET);
-                //System.out.printf(ANSI_GREEN + "%23s", "Winner Is: " + ANSI_RESET);
-                System.out.printf(ANSI_BLUE + "%55s", player + ANSI_RESET);
+                System.out.println();
                 break;
             }
             default: {
                 System.out.printf(ANSI_GREEN + "%23s", "Game Status: " + ANSI_RESET);
                 System.out.printf(ANSI_BLUE + "%s", status + ANSI_RESET);
-                System.out.printf(ANSI_GREEN + "%55s", "Player Up: " + ANSI_RESET);
+                System.out.printf(ANSI_GREEN + "%31s", "Difficulty Level: " + ANSI_RESET);
+                System.out.printf(ANSI_BLUE + "%s", theLevel + ANSI_RESET);
+                System.out.printf(ANSI_GREEN + "%27s", "Player Up: " + ANSI_RESET);
                 System.out.printf(ANSI_BLUE + "%s", player + ANSI_RESET);
+                System.out.println();
             }
         }
 

@@ -6,7 +6,7 @@ enum Status {
 
     PLAYING("Playing"),
     GAME_OVER("Game Over"),
-    TIE("It's a tie");
+    TIE("It's A Tie");
 
     // Everything below here is regular class definition to provide string values of Status Enums
     private final String display;
