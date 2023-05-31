@@ -5,7 +5,7 @@ public class Player1 implements Player {
     // fields ( constants )
     public String name;
     public String mark = "O";
-    public int nextMove;
+    public int nextMove = 0;
     public int lowerBound = 1;
     public int upperBound = 9;
 
@@ -16,7 +16,7 @@ public class Player1 implements Player {
         setMark(mark);
     }
 
-    public Player1(String name, String mark, int nextMove) throws InvalidInputException{
+    public Player1(String name, String mark, int nextMove) {
         setName(name);
         setMark(mark);
         setNextMove(nextMove);
@@ -36,22 +36,14 @@ public class Player1 implements Player {
             this.nextMove = nextMove;
         }
         if ( nextMove >= lowerBound && nextMove <= upperBound ) {
-            this.nextMove = nextMove - 1;
+            this.nextMove = nextMove;
         }
-
     }
-
 
     // need to code throwing of error message if next move choice is out of bounds
     public int getNextMove(){
         return nextMove;
     }
-
-
-
-
-
-
     // Interface Methods
 
     @Override

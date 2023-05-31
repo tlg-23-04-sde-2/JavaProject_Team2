@@ -1,5 +1,6 @@
 import java.util.*;
-import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 
 public class Application {
 
@@ -8,8 +9,9 @@ public class Application {
     static String ANSI_BLUE = "\u001B[34m";
     static String ANSI_RESET = "\u001B[0m";
 
-    public static void main(String[] args) {
 
+    public static void main(String[] args) {
+        String playAgain = "No";
         //set up for Player 1 to start
         Scanner scanner = new Scanner(System.in);           // reads input from console
         Board board = new Board();
@@ -69,7 +71,7 @@ public class Application {
 
                 if (input.equals("Q")) System.exit(0);
                 // set the players input as the nextMove
-                newPlayer.setNextMove(Integer.parseInt(input));
+                newPlayer.setNextMove((Integer.parseInt(input))-1);
 
                 if (input.matches("1|2|3|4|5|6|7|8|9|Q")) {
                     if (input.equals("Q")) {
@@ -95,7 +97,6 @@ public class Application {
             }
 
             //Check after Player 1's turn to see if there is a winner
-
             if (board.isThereAWinner(board.grid, newPlayer.mark)) {
                 board.status = Status.GAME_OVER.getDisplay();
                 board.player = newPlayer.getPlayer();
