@@ -1,3 +1,5 @@
+package com.gojava.tictactoe;
+
 public class Board {
 
     String[] grid = {"", "", "", "", "", "", "", "", ""};

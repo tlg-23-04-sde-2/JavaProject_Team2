@@ -1,3 +1,5 @@
+package com.gojava.tictactoe;
+
 public interface Player {
 
     // Methods

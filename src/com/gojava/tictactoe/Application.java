@@ -1,3 +1,5 @@
+package com.gojava.tictactoe;
+
 import java.util.*;
 
 public class Application {

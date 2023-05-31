@@ -1,4 +1,4 @@
-/*
+package com.gojava.tictactoe;/*
  *   This provides for exactly 3 instances of Statuses for the board
  */
 

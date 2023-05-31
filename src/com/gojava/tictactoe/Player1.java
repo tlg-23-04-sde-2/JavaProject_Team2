@@ -1,3 +1,5 @@
+package com.gojava.tictactoe;
+
 public class Player1 implements Player {
 
     // fields ( constants )
