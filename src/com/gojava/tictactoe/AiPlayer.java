@@ -1,5 +1,8 @@
 package com.gojava.tictactoe;
 
+/*
+ *  Template to create the AiPlayer, Hal
+ */
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +24,7 @@ public class AiPlayer implements Player {
         int halsMove = 0;
         System.out.println("The Difficulty Level is set to:  " + diffLevel);
 
+        //Based on the users selection of Easy or Hard determines Hals selection process
         if (diffLevel.equals("Easy")) {
             //Hals turn and playing with a random generator
             Random rand = new Random();
@@ -37,6 +41,7 @@ public class AiPlayer implements Player {
     }
 
     public int bestMove() {
+        //Hals turn and playing with the miniMax algorithm
         int bestScore = Integer.MAX_VALUE;
         int bestMove = 0;
         for (int i = 0; i < theGrid.grid.length; i++) {

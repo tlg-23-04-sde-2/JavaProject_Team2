@@ -32,14 +32,14 @@ public class playerTest {
     }
 
     @Test
-    public void playerX_shouldThrow_invalidInput_lowerBound() {
+    public void setNextMove_shouldNotBeSet_whenPlayerProvidesInvalidInputLowerRange() {
         playerX.setNextMove(-1);
         assertEquals(5, playerX.getNextMove());
     }
 
     @Test
-    public void playerX_shouldThrow_invalidInput_upperBound() {
-        playerX.setNextMove(10);
+    public void setNextMove_shouldNotBeSet_whenPlayerProvidesInvalidInputUpperRange() {
+        playerX.setNextMove(11);
         assertEquals(5, playerX.getNextMove());
     }
 }

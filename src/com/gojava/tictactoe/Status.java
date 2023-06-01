@@ -1,7 +1,8 @@
-package com.gojava.tictactoe;/*
- *   This provides for exactly 3 instances of Statuses for the board
- */
+package com.gojava.tictactoe;
 
+/*
+ *   This provides for exactly 3 instances of statuses for the board
+ */
 enum Status {
 
     PLAYING("Playing"),
@@ -19,9 +20,5 @@ enum Status {
     // accessor methods - here, we provide "read-only" access to the display property
     public String getDisplay() {
         return display;
-    }
-
-    public String toString() {
-        return getDisplay();
     }
 }

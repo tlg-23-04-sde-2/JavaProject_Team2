@@ -1,5 +1,8 @@
 package com.gojava.tictactoe;
 
+/*
+ *   Sets up the board
+ */
 public class Board {
 
     String[] grid = {"", "", "", "", "", "", "", "", ""};
@@ -7,7 +10,7 @@ public class Board {
     String status = "In-Play";
     String level = "";
 
-    // CONSTRUCTOR
+    // Constructor
     public Board() {
     }
 
@@ -15,6 +18,7 @@ public class Board {
         grid[position] = theMark;
     }
 
+    // Checks for a winning condition (i.e. mark has three in a row, column, or diagonal)
     public boolean isThereAWinner(String[] grid, String mark) {
 
         if (
@@ -38,12 +42,13 @@ public class Board {
         status = theStatus;
         level = theLevel;
 
+        // Sets up the text color
         final String ANSI_BLUE = "\u001B[34m";
         final String ANSI_GREEN = "\u001B[32m";
         final String ANSI_RED = "\u001B[31m";
         final String ANSI_RESET = "\u001B[0m";
 
-        //Print out the headers
+        // Print out the headers
         System.out.println();
         System.out.printf(ANSI_GREEN + "%64s\n", "***************************" + ANSI_RESET);
         System.out.printf(ANSI_GREEN + "%70s\n", "******* " + ANSI_BLUE + "TIC-TAC-TOE" + ANSI_GREEN + " *******");
@@ -76,7 +81,7 @@ public class Board {
             }
         }
 
-        //Print out the board
+        // Prints out the board
         System.out.println("");
         System.out.printf(ANSI_GREEN + "%55s", "   |     |    \n");
         System.out.printf(ANSI_BLUE + "%41s" + ANSI_GREEN + "  |  " + ANSI_BLUE + "%1s" +

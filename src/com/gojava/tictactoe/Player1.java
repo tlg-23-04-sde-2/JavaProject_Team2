@@ -1,15 +1,19 @@
 package com.gojava.tictactoe;
 
+/*
+ *  Creating the human player
+ */
+
 public class Player1 implements Player {
 
-    // fields ( constants )
+    // Fields (constants)
     public String name;
-    public String mark = "O";
+    public String mark = "";
     public int nextMove = 0;
-    public int lowerBound = 1;
-    public int upperBound = 9;
+    public int lowerBound = 0;
+    public int upperBound = 10;
 
-    // constructors
+    // Constructors
     public Player1(String name, String mark) {
         setName(name);
         setMark(mark);
@@ -21,17 +25,17 @@ public class Player1 implements Player {
         setNextMove(nextMove);
     }
 
-    // accessor methods
+    // Accessor methods
     public void setName(String name) {
         this.name = name;
     }
 
     public void setMark(String mark) {
         this.mark = mark;
+
     }
 
     public void setNextMove(int nextMove) {
-
         if (nextMove == lowerBound) {
             this.nextMove = nextMove;
         }
@@ -40,18 +44,17 @@ public class Player1 implements Player {
         }
     }
 
-    // need to code throwing of error message if next move choice is out of bounds
     public int getNextMove() {
         return nextMove;
     }
-    // Interface Methods
 
+    // Interface Methods
     @Override
     public String getPlayer() {
         return this.name;
     }
 
-    // only need to retrieve once at beginning to note what Mark( X or O ) LiveActionPlayer is
+    // Only need to retrieve once at the beginning to note what mark("X" or "O") LiveActionPlayer is
     @Override
     public String setMark() {
         return this.mark;
