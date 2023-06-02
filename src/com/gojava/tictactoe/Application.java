@@ -91,12 +91,13 @@ public class Application {
                                 }
                                 input = scanner.nextLine().trim().toUpperCase();
                                 if (input.equals("Q")) System.exit(0);
+                                if (input.matches("1|2|3|4|5|6|7|8|9")) {
+                                    newPlayer.setNextMove((Integer.parseInt(input)) - 1);
+                                }
                             }
-                            newPlayer.setNextMove((Integer.parseInt(input)) - 1);
                         }
                         board.grid[newPlayer.getNextMove()] = newPlayer.mark;
                         board.updateBoard(newPlayer.mark, newPlayer.getNextMove());
-                        board.showBoard(newPlayer2.getPlayer(), Status.PLAYING.getDisplay(), diffLevel);
                     }
                     validInput = true;
                 }
@@ -109,7 +110,7 @@ public class Application {
                     break;
                 }
 
-                //Check to see if there is a Tie
+                //Check after Player 1's turn to see if there is a Tie
                 List<String> tieTracker = new ArrayList<>(Arrays.asList(board.grid));
                 tieTracker.removeAll(Arrays.asList("", null));
 
@@ -117,14 +118,14 @@ public class Application {
                     board.status = Status.TIE.getDisplay();
                     board.showBoard(board.player, board.status, diffLevel);
                     break;
+                } else {
+                    board.showBoard(newPlayer2.getPlayer(), Status.PLAYING.getDisplay(), diffLevel);
                 }
 
-                //Hals turn and playing with miniMax algorithm
+                //Hals turn
                 int halsPosition = newPlayer2.aiMove(board.grid);
                 board.grid[halsPosition] = newPlayer2.setMark();
                 board.updateBoard(newPlayer2.setMark(), halsPosition);
-                board.showBoard(newPlayer.getPlayer(), Status.PLAYING.getDisplay(), diffLevel);
-
 
                 //check for a winner after Hals move
                 if (board.isThereAWinner(board.grid, newPlayer2.setMark())) {
@@ -133,13 +134,16 @@ public class Application {
                     board.player = newPlayer2.getPlayer();
                     board.showBoard(board.player, board.status, diffLevel);
                     break;
+                } else {
+                    board.showBoard(newPlayer.getPlayer(), Status.PLAYING.getDisplay(), diffLevel);
                 }
+
             }
             System.out.println();
             System.out.printf(ANSI_GREEN + "%85s", "Do you wish to play again? (" + ANSI_BLUE +
                     "Y" + ANSI_GREEN + "/" + ANSI_BLUE + "n" + ANSI_GREEN + "): ");
             playAgain = scanner.nextLine().trim().toUpperCase();
             System.out.println();
-        } while (playAgain.equals("Y") || playAgain.equals(""));
+        } while (playAgain.equals("Y") || playAgain.equals(""));   //end of the "do"
     }
 }
