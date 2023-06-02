@@ -91,8 +91,8 @@ public class Application {
                                 }
                                 input = scanner.nextLine().trim().toUpperCase();
                                 if (input.equals("Q")) System.exit(0);
-                                newPlayer.setNextMove((Integer.parseInt(input)) - 1);
                             }
+                            newPlayer.setNextMove((Integer.parseInt(input)) - 1);
                         }
                         board.grid[newPlayer.getNextMove()] = newPlayer.mark;
                         board.updateBoard(newPlayer.mark, newPlayer.getNextMove());
