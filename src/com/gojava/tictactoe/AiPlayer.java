@@ -22,9 +22,8 @@ public class AiPlayer implements Player {
     public int aiMove(String[] grid) {
         theGrid.grid = grid;
         int halsMove = 0;
-        System.out.println("The Difficulty Level is set to:  " + diffLevel);
 
-        //Based on the users selection of Easy or Hard determines Hals selection process
+        //Based on the user's selection of Easy or Hard determines Hals selection process
         if (diffLevel.equals("Easy")) {
             //Hals turn and playing with a random generator
             Random rand = new Random();
