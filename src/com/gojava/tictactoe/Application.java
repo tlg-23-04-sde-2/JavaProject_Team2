@@ -70,7 +70,9 @@ public class Application {
                 while (!validInput) {
                     String input = "";
                     while (!input.matches("1|2|3|4|5|6|7|8|9|Q")) {
-                        System.out.printf(ANSI_GREEN + "%78s", "Enter (1-9) to select the grid for your mark or 'Q' to quit: ");
+                        System.out.printf(ANSI_GREEN + "%98s", "Enter (" + ANSI_BLUE + "1-9" + ANSI_GREEN +
+                                ") to select the grid for your mark or (" + ANSI_BLUE + "Q" + ANSI_GREEN +
+                                ")uit: ");
                         input = scanner.nextLine().trim().toUpperCase();
                     }
 
@@ -85,7 +87,9 @@ public class Application {
                             //checking to ensure the Player's selection isn't already taken
                             while (board.grid[newPlayer.getNextMove()] != "") {
                                 if (!input.matches("1|2|3|4|5|6|7|8|9|Q")) {
-                                    System.out.printf(ANSI_GREEN + "%78s", "Enter (1-9) to select the grid for your mark or 'Q' to quit: ");
+                                    System.out.printf(ANSI_GREEN + "%98s", "Enter (" + ANSI_BLUE + "1-9" + ANSI_GREEN +
+                                            ") to select the grid for your mark or (" + ANSI_BLUE + "Q" + ANSI_GREEN +
+                                            ")uit: ");
                                 } else {
                                     System.out.printf(ANSI_RED + "%78s", "Position already taken! Enter a vacant position: ");
                                 }
